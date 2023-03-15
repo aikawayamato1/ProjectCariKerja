@@ -10,6 +10,7 @@ public class StatusPlate : ScriptableObject
     public float mdamage;
     public float armour;
     public float marmour;
+    public float speed;
 
     public bool magtype;
 }

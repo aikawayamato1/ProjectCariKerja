@@ -17,4 +17,5 @@ MonoBehaviour:
   mdamage: 1
   armour: 0
   marmour: 0
+  speed: 10
   magtype: 0
