@@ -15,7 +15,9 @@ MonoBehaviour:
   health: 100
   pdamage: 1
   mdamage: 1
-  armour: 0
-  marmour: 0
+  armour: 1
+  marmour: 1
   speed: 10
+  aspd: 1
+  crit: 1
   magtype: 0
