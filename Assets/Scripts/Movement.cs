@@ -8,11 +8,16 @@ public class Movement : MonoBehaviour
     public Camera cam;
     public StatusPlate sp;
     public float rotateSpeed;
+    public PlayerStats ps;
+    public float getdmg;
+    public bool CanAtk;
+    
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        
+        ps = GetComponent<PlayerStats>();
+        CanAtk = true;
     }
 
     // Update is called once per frame
@@ -24,6 +29,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         Rotation();
+        Attack();
     }
     void Move()
     {
@@ -42,6 +48,22 @@ public class Movement : MonoBehaviour
         
 
         transform.up = lookPos;
+    }
+    void Attack()
+    {
+        if(Input.GetMouseButton(0) && CanAtk)
+        {
+            getdmg = ps.AttackCounter();
+            Debug.Log(getdmg);
+            CanAtk = false; 
+            StartCoroutine(AttackSpeed(ps.GetAttackSpeed()));
+        }
+       
+    }
+    IEnumerator AttackSpeed(float rate)
+    {
+        yield return new WaitForSeconds(rate);
+        CanAtk = true;
     }
     
 }

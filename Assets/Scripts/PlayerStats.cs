@@ -13,6 +13,9 @@ public class PlayerStats : MonoBehaviour
     [Header("Damage")]
     public float attack;
     public float mattack;
+    public float atktotal;
+    public float attackmin;
+    public float mattackmin;
 
     [Header("Mana")]
     public float manaregen;
@@ -36,9 +39,15 @@ public class PlayerStats : MonoBehaviour
     [Header("Plates")]
     public StatusPlate sp;
 
+    [Header("Magic Type")]
+    public bool magicType;
+
     private void Start()
     {
         attack = sp.pdamage;
+        mattack = sp.mdamage;
+        attackmin = sp.pdamage;
+        mattackmin = sp.mdamage;
         defense = sp.armour;
         mdefense = sp.marmour;
         aspd = sp.aspd;
@@ -69,11 +78,13 @@ public class PlayerStats : MonoBehaviour
     public void Strenght()
     {
         attack = attack + str*10f;
+        attackmin = attackmin + str * 5f;
         defense = defense + str * 5f;
     }
     public void Intelligence()
     {
         mattack = mattack + intel * 10f;
+        mattackmin = mattackmin + intel * 5f;
         mana = intel * 100f;
         manaregen = intel * 0.1f;
 
@@ -101,5 +112,41 @@ public class PlayerStats : MonoBehaviour
     {
         health = con * 100f;
         mdefense = mdefense + con * 0.5f;
+    }
+    public float GetAttackSpeed()
+    {
+        return totalaspd;
+    }
+    public float AttackCounter()
+    {
+        int randomN=Random.Range(1,100);
+        float randomMinP = Random.Range(attackmin, attack);
+        float randomMinM = Random.Range(mattackmin, mattack);
+        if (randomN<=cr)
+        {
+            Debug.Log("Crit!!");
+            if (!magicType)
+            {
+                atktotal = (randomMinP * cdm) / 100;
+
+            }
+            else
+            {
+                atktotal = (randomMinM * cdm) / 100;
+            }
+        }
+        else
+        {
+            if (!magicType)
+            {
+                atktotal = randomMinP;
+
+            }
+            else
+            {
+                atktotal = randomMinM;
+            }
+        }
+        return atktotal;
     }
 }

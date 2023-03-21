@@ -231,6 +231,9 @@ MonoBehaviour:
   cam: {fileID: 1516585601}
   sp: {fileID: 11400000, guid: a2df1fb6374d44f49a05ddf01d59831b, type: 2}
   rotateSpeed: 10
+  ps: {fileID: 0}
+  getdmg: 0
+  CanAtk: 0
 --- !u!212 &474957255
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -312,10 +315,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intel: 1255
   str: 2231
-  agi: 5124
+  agi: 5223
   con: 1234
   attack: 0
   mattack: 0
+  atktotal: 0
+  attackmin: 0
+  mattackmin: 0
   manaregen: 0
   mana: 0
   health: 0
@@ -328,6 +334,7 @@ MonoBehaviour:
   aspd: 0
   totalaspd: 0
   sp: {fileID: 11400000, guid: a2df1fb6374d44f49a05ddf01d59831b, type: 2}
+  magicType: 0
 --- !u!1 &912070509
 GameObject:
   m_ObjectHideFlags: 0
