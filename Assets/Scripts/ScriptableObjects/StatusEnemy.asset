@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555a21efe67456c4fb200e4bdcedee3d, type: 3}
   m_Name: StatusEnemy
   m_EditorClassIdentifier: 
-  health: 10
+  health: 1000
   pdamage: 1
   mdamage: 1
-  armour: 0
-  marmour: 0
+  armour: 5
+  marmour: 5
+  speed: 0
+  aspd: 0
+  crit: 0
   magtype: 0

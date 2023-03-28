@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     public PlayerStats ps;
     public float getdmg;
     public bool CanAtk;
+    private EnemyStats es;
     
     // Start is called before the first frame update
     void Start()
@@ -51,12 +52,22 @@ public class Movement : MonoBehaviour
     }
     void Attack()
     {
-        if(Input.GetMouseButton(0) && CanAtk)
+
+        Vector2 lookPos = cam.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(lookPos, Vector2.zero);
+
+        if (Input.GetMouseButton(0) && CanAtk && hit.collider!=null)
         {
-            getdmg = ps.AttackCounter();
-            Debug.Log(getdmg);
-            CanAtk = false; 
-            StartCoroutine(AttackSpeed(ps.GetAttackSpeed()));
+            if(hit.collider.gameObject.tag=="Enemy")
+            {
+                getdmg = ps.AttackCounter();
+                es = hit.collider.gameObject.GetComponent<EnemyStats>();
+                es.GotHitted(getdmg);
+                Debug.Log(getdmg);
+                CanAtk = false;
+                StartCoroutine(AttackSpeed(ps.GetAttackSpeed()));
+            }
+            
         }
        
     }

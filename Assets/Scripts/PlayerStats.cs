@@ -85,7 +85,7 @@ public class PlayerStats : MonoBehaviour
     {
         mattack = mattack + intel * 10f;
         mattackmin = mattackmin + intel * 5f;
-        mana = intel * 100f;
+        mana = intel * 2f;
         manaregen = intel * 0.1f;
 
     }
@@ -98,20 +98,21 @@ public class PlayerStats : MonoBehaviour
             aspd = 99.9f;
             totalaspd = 100f - aspd;
             totalaspd = totalaspd / 100;
-            totalaspd = totalaspd * 3;
+            totalaspd = totalaspd * 2;
         }
         else
         {
             totalaspd = 100f - aspd;
             totalaspd = totalaspd / 100;
-            totalaspd = totalaspd * 3;
+            totalaspd = totalaspd * 2;
         }
         
     }
     public void Constitution()
     {
-        health = con * 100f;
+        health = con * 2f;
         mdefense = mdefense + con * 0.5f;
+        hpregen = con * 0.1f;
     }
     public float GetAttackSpeed()
     {
